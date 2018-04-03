@@ -7,22 +7,22 @@ var pickRock = document.getElementById('js-playerPick_rock'),
     pickScissors = document.getElementById('js-playerPick_scissors');
 
 pickRock.addEventListener('click', function() { 
-	playerPick('rock') 
+    playerPick('rock'); 
 });
 
 pickPaper.addEventListener('click', function() { 
-	playerPick('paper') 
+	playerPick('paper'); 
 });
 
 pickScissors.addEventListener('click', function() { 
-	playerPick('scissors') 
+	playerPick('scissors'); 
 });
 
 var gameState = 'notStarted',  //started // ended
     player = {
         name: '',
         score: 0
-    },
+    },  
     computer = {
         score: 0
     };
@@ -32,44 +32,37 @@ var newGameElem = document.getElementById('js-newGameElement'),
     resultsElem = document.getElementById('js-resultsTableElement');
 
 function setGameElements() {
-  switch(gameState) {
-    case 'started':
-        newGameElem.style.display = 'none';
-        pickElem.style.display = 'block';
-        resultsElem.style.display = 'block';
-      break;
-    case 'ended':
-        newGameBtn.innerText = 'Jeszcze raz';
-    case 'notStarted':
-    default:
-        newGameElem.style.display = 'block';
-        pickElem.style.display = 'none';
-        resultsElem.style.display = 'none';
-  }
+    switch(gameState) {
+        case 'started':
+            newGameElem.style.display = 'none';
+            pickElem.style.display = 'block';
+            resultsElem.style.display = 'block';
+            break;
+        case 'ended':
+            newGameBtn.innerText = 'Jeszcze raz';
+        case 'notStarted':
+        default:
+            newGameElem.style.display = 'block';
+            pickElem.style.display = 'none';
+            resultsElem.style.display = 'none';
+    }
 }
 
- var playerPointsElem = document.getElementById('js-playerPoints'),
-     playerNameElem = document.getElementById('js-playerName'),
-     computerPointsElem = document.getElementById('js-computerPoints');
+var playerPointsElem = document.getElementById('js-playerPoints'),
+    playerNameElem = document.getElementById('js-playerName'),
+    computerPointsElem = document.getElementById('js-computerPoints');
 
 function newGame() {
-  player.name = prompt('Please enter your name', 'imię gracza');
-  if (player.name) {
-    player.score = computer.score = 0;
-    gameState = 'started';
-    setGameElements();
+    player.name = prompt('Please enter your name', 'imię gracza');
+    if (player.name) {
+        player.score = computer.score = 0;
+        gameState = 'started';
+        setGameElements();
 
-    playerNameElem.innerHTML = player.name;
-    setGamePoints();
-  }
+        playerNameElem.innerHTML = player.name;
+        setGamePoints();
+    }
 }
-
-function playerPick(playerPick) {
-    console.log(playerPick);
-}
-
-var x = Math.random();
-Math.floor(Math.random()*3)
 
 function getComputerPick() {
     var possiblePicks = ['rock', 'paper', 'scissors'];
@@ -81,17 +74,10 @@ var playerPickElem = document.getElementById('js-playerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
 
-function playerPick(playerPick) {
-    var computerPick = getComputerPick();
-
-    playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
-}
-
 function checkRoundWinner(playerPick, computerPick) {
-  playerResultElem.innerHTML = computerResultElem.innerHTML = '';
+    playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
-  var winnerIs = 'player';
+    var winnerIs = 'player';
 
     if (playerPick == computerPick) {
         winnerIs = 'noone'; // remis
@@ -106,12 +92,12 @@ function checkRoundWinner(playerPick, computerPick) {
     if (winnerIs == 'player') {
         playerResultElem.innerHTML = "Win!";
         player.score++;
-        setGamePoints()
+        setGamePoints();
         checkScore();
     } else if (winnerIs == 'computer') {
         computerResultElem.innerHTML = "Win!";
         computer.score++;
-        setGamePoints()
+        setGamePoints();
         checkScore();
     }
 }
