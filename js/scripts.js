@@ -48,6 +48,8 @@ function setGameElements() {
     }
 }
 
+setGameElements()
+
 var playerPointsElem = document.getElementById('js-playerPoints'),
     playerNameElem = document.getElementById('js-playerName'),
     computerPointsElem = document.getElementById('js-computerPoints');
@@ -118,15 +120,13 @@ function setGamePoints() {
 
 function checkScore() {
     if (computer.score == 10) {
-        alert('Sorry, this time computer wins');
+        alert('Tym razem wygrana komputera!');
         gameState = 'ended';
         setGameElements();
-      
-    	} else if (player.score == 10) {
-        alert('Super, You are the winner ' + player.name); 
+    } else if (player.score == 10) {
+        alert('Super, You are the winner ' + player.name + '!'); 
         gameState = 'ended';
         setGameElements();
     } 
 }
-
 
